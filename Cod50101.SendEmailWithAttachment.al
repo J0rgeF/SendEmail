@@ -27,8 +27,12 @@ codeunit 50101 SendEmailWithAttachment
         EmailMsg.AddAttachment('CustomerList.pdf', '', InStr);
 
         if Email.Send(EmailMsg) then
-            Message('Email Sent Successfully with attachment')
+            Message(SucessfullEmailAttachmentMessage)
         else
-            Error('Failed to send email %1', GetLastErrorText());
+            Error(FailedEmailMessage, GetLastErrorText());
     end;
+
+    var
+        SucessfullEmailAttachmentMessage: Label 'Email Sent Successfully with attachment';
+        FailedEmailMessage: Label 'Failed to send email %1';
 }
